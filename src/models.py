@@ -81,6 +81,14 @@ class Favorite(db.Model) :
     user: Mapped["User"] = relationship(back_populates="favoritos")
     planet: Mapped[Optional["Planet"]]= relationship()
     people: Mapped[Optional["People"]]= relationship()
+
+    def serialize (self):
+        return{
+            "id" :self.id,
+            "user_id" : self.user_id,
+            "planet_id": self.planet_id,
+            "people_id": self.people_id,
+        }
     
 
 
